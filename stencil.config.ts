@@ -1,4 +1,8 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
+
+const isDev: boolean = process.argv && process.argv.indexOf('--dev') > -1;
 
 export const config: Config = {
   namespace: 'demo-frame',
@@ -19,6 +23,13 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
+  taskQueue: 'async',
+  plugins: [
+    sass({
+      injectGlobalPaths: ['node_modules/@go-ui/core/src/global/scss/_utils.scss'],
+    }),
+  ],
+  rollupPlugins: { after: [nodePolyfills()] },
 };

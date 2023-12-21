@@ -5,20 +5,258 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IProp } from "./components/demo-playground/prop.type";
+import { ISlot } from "./components/demo-playground/slot.type";
+export { IProp } from "./components/demo-playground/prop.type";
+export { ISlot } from "./components/demo-playground/slot.type";
 export namespace Components {
+    interface CodeBlock {
+        "code": string;
+        "language": string;
+    }
+    interface CopyCodeBtn {
+        "code": string;
+    }
+    interface DemoFrame {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code": string;
+        "component": string;
+        "demo": string;
+        "hideSource": boolean;
+    }
+    interface GoDemoBox {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code": string;
+        "darkModeSwitch": boolean;
+        /**
+          * Custom head html inside iframe
+         */
+        "head": string;
+        "hideSource": boolean;
+    }
+    interface PropsPanel {
+        "debug": boolean;
+        "values": IProp[];
+    }
+    interface SlotsPanel {
+        "debug": boolean;
+        "values": ISlot[];
+    }
+    interface WcOutput {
+        "usage": string;
+    }
+    interface WcPlayground {
+        "block": boolean;
+        "code": string;
+        "props": IProp[] | string;
+        "slots"?: ISlot[] | string;
+        /**
+          * query selector for the component to apply props to
+         */
+        "tag": string;
+    }
+}
+export interface CopyCodeBtnCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCopyCodeBtnElement;
+}
+export interface PropsPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPropsPanelElement;
+}
+export interface SlotsPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSlotsPanelElement;
+}
+export interface WcPlaygroundCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLWcPlaygroundElement;
 }
 declare global {
+    interface HTMLCodeBlockElement extends Components.CodeBlock, HTMLStencilElement {
+    }
+    var HTMLCodeBlockElement: {
+        prototype: HTMLCodeBlockElement;
+        new (): HTMLCodeBlockElement;
+    };
+    interface HTMLCopyCodeBtnElementEventMap {
+        "copyCode": any;
+    }
+    interface HTMLCopyCodeBtnElement extends Components.CopyCodeBtn, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCopyCodeBtnElementEventMap>(type: K, listener: (this: HTMLCopyCodeBtnElement, ev: CopyCodeBtnCustomEvent<HTMLCopyCodeBtnElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCopyCodeBtnElementEventMap>(type: K, listener: (this: HTMLCopyCodeBtnElement, ev: CopyCodeBtnCustomEvent<HTMLCopyCodeBtnElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCopyCodeBtnElement: {
+        prototype: HTMLCopyCodeBtnElement;
+        new (): HTMLCopyCodeBtnElement;
+    };
+    interface HTMLDemoFrameElement extends Components.DemoFrame, HTMLStencilElement {
+    }
+    var HTMLDemoFrameElement: {
+        prototype: HTMLDemoFrameElement;
+        new (): HTMLDemoFrameElement;
+    };
+    interface HTMLGoDemoBoxElement extends Components.GoDemoBox, HTMLStencilElement {
+    }
+    var HTMLGoDemoBoxElement: {
+        prototype: HTMLGoDemoBoxElement;
+        new (): HTMLGoDemoBoxElement;
+    };
+    interface HTMLPropsPanelElementEventMap {
+        "propChange": IProp[];
+    }
+    interface HTMLPropsPanelElement extends Components.PropsPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPropsPanelElementEventMap>(type: K, listener: (this: HTMLPropsPanelElement, ev: PropsPanelCustomEvent<HTMLPropsPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPropsPanelElementEventMap>(type: K, listener: (this: HTMLPropsPanelElement, ev: PropsPanelCustomEvent<HTMLPropsPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPropsPanelElement: {
+        prototype: HTMLPropsPanelElement;
+        new (): HTMLPropsPanelElement;
+    };
+    interface HTMLSlotsPanelElementEventMap {
+        "slotDisplayChange": ISlot[];
+    }
+    interface HTMLSlotsPanelElement extends Components.SlotsPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSlotsPanelElementEventMap>(type: K, listener: (this: HTMLSlotsPanelElement, ev: SlotsPanelCustomEvent<HTMLSlotsPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSlotsPanelElementEventMap>(type: K, listener: (this: HTMLSlotsPanelElement, ev: SlotsPanelCustomEvent<HTMLSlotsPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSlotsPanelElement: {
+        prototype: HTMLSlotsPanelElement;
+        new (): HTMLSlotsPanelElement;
+    };
+    interface HTMLWcOutputElement extends Components.WcOutput, HTMLStencilElement {
+    }
+    var HTMLWcOutputElement: {
+        prototype: HTMLWcOutputElement;
+        new (): HTMLWcOutputElement;
+    };
+    interface HTMLWcPlaygroundElementEventMap {
+        "loaded": HTMLElement;
+    }
+    interface HTMLWcPlaygroundElement extends Components.WcPlayground, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLWcPlaygroundElementEventMap>(type: K, listener: (this: HTMLWcPlaygroundElement, ev: WcPlaygroundCustomEvent<HTMLWcPlaygroundElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLWcPlaygroundElementEventMap>(type: K, listener: (this: HTMLWcPlaygroundElement, ev: WcPlaygroundCustomEvent<HTMLWcPlaygroundElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLWcPlaygroundElement: {
+        prototype: HTMLWcPlaygroundElement;
+        new (): HTMLWcPlaygroundElement;
+    };
     interface HTMLElementTagNameMap {
+        "code-block": HTMLCodeBlockElement;
+        "copy-code-btn": HTMLCopyCodeBtnElement;
+        "demo-frame": HTMLDemoFrameElement;
+        "go-demo-box": HTMLGoDemoBoxElement;
+        "props-panel": HTMLPropsPanelElement;
+        "slots-panel": HTMLSlotsPanelElement;
+        "wc-output": HTMLWcOutputElement;
+        "wc-playground": HTMLWcPlaygroundElement;
     }
 }
 declare namespace LocalJSX {
+    interface CodeBlock {
+        "code"?: string;
+        "language"?: string;
+    }
+    interface CopyCodeBtn {
+        "code"?: string;
+        "onCopyCode"?: (event: CopyCodeBtnCustomEvent<any>) => void;
+    }
+    interface DemoFrame {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code"?: string;
+        "component"?: string;
+        "demo"?: string;
+        "hideSource"?: boolean;
+    }
+    interface GoDemoBox {
+        /**
+          * custom code to be injected into demo frame
+         */
+        "code"?: string;
+        "darkModeSwitch"?: boolean;
+        /**
+          * Custom head html inside iframe
+         */
+        "head"?: string;
+        "hideSource"?: boolean;
+    }
+    interface PropsPanel {
+        "debug"?: boolean;
+        "onPropChange"?: (event: PropsPanelCustomEvent<IProp[]>) => void;
+        "values"?: IProp[];
+    }
+    interface SlotsPanel {
+        "debug"?: boolean;
+        "onSlotDisplayChange"?: (event: SlotsPanelCustomEvent<ISlot[]>) => void;
+        "values"?: ISlot[];
+    }
+    interface WcOutput {
+        "usage"?: string;
+    }
+    interface WcPlayground {
+        "block"?: boolean;
+        "code"?: string;
+        "onLoaded"?: (event: WcPlaygroundCustomEvent<HTMLElement>) => void;
+        "props"?: IProp[] | string;
+        "slots"?: ISlot[] | string;
+        /**
+          * query selector for the component to apply props to
+         */
+        "tag"?: string;
+    }
     interface IntrinsicElements {
+        "code-block": CodeBlock;
+        "copy-code-btn": CopyCodeBtn;
+        "demo-frame": DemoFrame;
+        "go-demo-box": GoDemoBox;
+        "props-panel": PropsPanel;
+        "slots-panel": SlotsPanel;
+        "wc-output": WcOutput;
+        "wc-playground": WcPlayground;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "code-block": LocalJSX.CodeBlock & JSXBase.HTMLAttributes<HTMLCodeBlockElement>;
+            "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
+            "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
+            "go-demo-box": LocalJSX.GoDemoBox & JSXBase.HTMLAttributes<HTMLGoDemoBoxElement>;
+            "props-panel": LocalJSX.PropsPanel & JSXBase.HTMLAttributes<HTMLPropsPanelElement>;
+            "slots-panel": LocalJSX.SlotsPanel & JSXBase.HTMLAttributes<HTMLSlotsPanelElement>;
+            "wc-output": LocalJSX.WcOutput & JSXBase.HTMLAttributes<HTMLWcOutputElement>;
+            "wc-playground": LocalJSX.WcPlayground & JSXBase.HTMLAttributes<HTMLWcPlaygroundElement>;
         }
     }
 }

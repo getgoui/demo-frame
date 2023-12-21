@@ -4,11 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@go-ui/core@1.33.14/dist/go-ui/go-ui.min.css" />
     <script type="module" src="/build/demo-frame.esm.js"></script>
     <script nomodule src="/build/demo-frame.js"></script>
   </head>
   <body>
-    <go-button>ASDF</go-button>
+    <wc-playground
+      tag="go-button"
+      props="[
+      {name: 'variant', type: 'select', value: 'neutral', 'options': ['neutral','primary','secondary','critical','text']},
+      {name: 'outline', type: 'boolean', value: false},
+      {name: 'outlineFill', type: 'boolean', value: false},
+      {name: 'flat', type: 'boolean', value: false},
+      {name: 'disabled', type: 'boolean', value: false},
+      {name: 'round', type: 'boolean', value: false},
+      {name: 'compact', type: 'boolean', value: false},
+    ]"
+      slots='[
+        {
+          "name": "default",
+          "docs": "Button text"
+        },
+        {
+          "name": "prefix",
+          "docs": "Use this slot to prepend content to the button."
+        },
+        {
+          "name": "suffix",
+          "docs": "Use this slot to append content to the button."
+        }
+    ]'
+      code='<go-button type="button">
+      Button
+    </go-button>'
+    ></wc-playground>
+    <demo-frame component="go-button" demo="go-button"></demo-frame>
   </body>
 </html>
