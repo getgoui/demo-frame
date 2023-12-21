@@ -1,7 +1,7 @@
 {
-  "name": "demo-frame",
+  "name": "@go-ui/demo-frame",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Demo frame for go-ui.com",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
@@ -23,7 +23,10 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "release": "bumpp --all",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",
