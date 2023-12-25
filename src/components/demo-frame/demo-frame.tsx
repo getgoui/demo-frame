@@ -50,9 +50,7 @@ export class DemoFrame {
       <Host>
         <go-demo-box
           head={`
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.esm.js"></script>
     <!-- inception, this loads the playground inside the demo frame -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/@go-ui/demo-frame/dist/demo-frame/demo-frame.esm.js"></script>
     `}

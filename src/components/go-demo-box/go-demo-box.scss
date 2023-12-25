@@ -1,5 +1,7 @@
 go-demo-box {
+  display: block;
   .demo-frame {
+    height: 100%;
     border: var(--go-border-thin) solid var(--go-color-border);
     border-radius: var(--radius-2) var(--radius-2) 0 0;
     box-shadow: var(--shadow-2);
@@ -105,6 +107,17 @@ go-demo-box {
       }
     }
 
+    &.disable-resize-x {
+      .frame-wrapper {
+        --iframe-width: 100%;
+      }
+    }
+
+    &.disable-resize-y {
+      .frame-wrapper {
+        margin-bottom: 0;
+      }
+    }
     go-accordion {
       --heading-radius: 0;
       --panel-padding-y: 4px;

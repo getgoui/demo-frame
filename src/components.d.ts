@@ -32,11 +32,26 @@ export namespace Components {
          */
         "code": string;
         "darkModeSwitch": boolean;
+        "disableResizeX": boolean;
+        "disableResizeY": boolean;
         /**
           * Custom head html inside iframe
          */
         "head": string;
+        "hideControlBar": boolean;
         "hideSource": boolean;
+        "reload": () => Promise<void>;
+        "setContent": (code: string) => Promise<void>;
+    }
+    interface GoPlayground {
+        /**
+          * initial code
+         */
+        "code": string;
+        "logoSrc": string;
+    }
+    interface GoPlaygroundHeader {
+        "logoSrc": any;
     }
     interface PropsPanel {
         "debug": boolean;
@@ -63,6 +78,10 @@ export namespace Components {
 export interface CopyCodeBtnCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLCopyCodeBtnElement;
+}
+export interface GoPlaygroundHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGoPlaygroundHeaderElement;
 }
 export interface PropsPanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -111,6 +130,29 @@ declare global {
     var HTMLGoDemoBoxElement: {
         prototype: HTMLGoDemoBoxElement;
         new (): HTMLGoDemoBoxElement;
+    };
+    interface HTMLGoPlaygroundElement extends Components.GoPlayground, HTMLStencilElement {
+    }
+    var HTMLGoPlaygroundElement: {
+        prototype: HTMLGoPlaygroundElement;
+        new (): HTMLGoPlaygroundElement;
+    };
+    interface HTMLGoPlaygroundHeaderElementEventMap {
+        "darkModeChange": any;
+    }
+    interface HTMLGoPlaygroundHeaderElement extends Components.GoPlaygroundHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGoPlaygroundHeaderElementEventMap>(type: K, listener: (this: HTMLGoPlaygroundHeaderElement, ev: GoPlaygroundHeaderCustomEvent<HTMLGoPlaygroundHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGoPlaygroundHeaderElementEventMap>(type: K, listener: (this: HTMLGoPlaygroundHeaderElement, ev: GoPlaygroundHeaderCustomEvent<HTMLGoPlaygroundHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLGoPlaygroundHeaderElement: {
+        prototype: HTMLGoPlaygroundHeaderElement;
+        new (): HTMLGoPlaygroundHeaderElement;
     };
     interface HTMLPropsPanelElementEventMap {
         "propChange": IProp[];
@@ -174,6 +216,8 @@ declare global {
         "copy-code-btn": HTMLCopyCodeBtnElement;
         "demo-frame": HTMLDemoFrameElement;
         "go-demo-box": HTMLGoDemoBoxElement;
+        "go-playground": HTMLGoPlaygroundElement;
+        "go-playground-header": HTMLGoPlaygroundHeaderElement;
         "props-panel": HTMLPropsPanelElement;
         "slots-panel": HTMLSlotsPanelElement;
         "wc-output": HTMLWcOutputElement;
@@ -204,11 +248,25 @@ declare namespace LocalJSX {
          */
         "code"?: string;
         "darkModeSwitch"?: boolean;
+        "disableResizeX"?: boolean;
+        "disableResizeY"?: boolean;
         /**
           * Custom head html inside iframe
          */
         "head"?: string;
+        "hideControlBar"?: boolean;
         "hideSource"?: boolean;
+    }
+    interface GoPlayground {
+        /**
+          * initial code
+         */
+        "code"?: string;
+        "logoSrc"?: string;
+    }
+    interface GoPlaygroundHeader {
+        "logoSrc"?: any;
+        "onDarkModeChange"?: (event: GoPlaygroundHeaderCustomEvent<any>) => void;
     }
     interface PropsPanel {
         "debug"?: boolean;
@@ -239,6 +297,8 @@ declare namespace LocalJSX {
         "copy-code-btn": CopyCodeBtn;
         "demo-frame": DemoFrame;
         "go-demo-box": GoDemoBox;
+        "go-playground": GoPlayground;
+        "go-playground-header": GoPlaygroundHeader;
         "props-panel": PropsPanel;
         "slots-panel": SlotsPanel;
         "wc-output": WcOutput;
@@ -253,6 +313,8 @@ declare module "@stencil/core" {
             "copy-code-btn": LocalJSX.CopyCodeBtn & JSXBase.HTMLAttributes<HTMLCopyCodeBtnElement>;
             "demo-frame": LocalJSX.DemoFrame & JSXBase.HTMLAttributes<HTMLDemoFrameElement>;
             "go-demo-box": LocalJSX.GoDemoBox & JSXBase.HTMLAttributes<HTMLGoDemoBoxElement>;
+            "go-playground": LocalJSX.GoPlayground & JSXBase.HTMLAttributes<HTMLGoPlaygroundElement>;
+            "go-playground-header": LocalJSX.GoPlaygroundHeader & JSXBase.HTMLAttributes<HTMLGoPlaygroundHeaderElement>;
             "props-panel": LocalJSX.PropsPanel & JSXBase.HTMLAttributes<HTMLPropsPanelElement>;
             "slots-panel": LocalJSX.SlotsPanel & JSXBase.HTMLAttributes<HTMLSlotsPanelElement>;
             "wc-output": LocalJSX.WcOutput & JSXBase.HTMLAttributes<HTMLWcOutputElement>;

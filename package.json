@@ -40,12 +40,19 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@go-ui/core": "^1.33.14",
+    "@codemirror/commands": "^6.3.2",
+    "@codemirror/lang-html": "^6.4.7",
+    "@codemirror/state": "^6.3.3",
+    "@codemirror/view": "^6.22.3",
+    "@go-ui/core": "^1.33.16",
+    "@replit/codemirror-vscode-keymap": "^6.0.2",
+    "codemirror": "^6.0.1",
     "copy-text-to-clipboard": "^3.2.0",
     "highlight.js": "^11.9.0",
     "json5": "^2.2.3",
     "lodash-es": "^4.17.21",
-    "pretty": "^2.0.0"
+    "pretty": "^2.0.0",
+    "thememirror": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"
