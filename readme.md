@@ -4,3 +4,5 @@
 
 [go-ui.com](https://go-ui.com/)
 [Go UI](https://github.com/getgoui/go-ui)
+
+To publish new version, bump version in package.json and run `npm publish`

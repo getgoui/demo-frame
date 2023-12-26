@@ -120,6 +120,12 @@ export class GoPlayground {
     if (this.isDirty) {
       this.syncContentToUrl(content);
     }
+    if (head) {
+      this.head = head;
+    }
+    if (code) {
+      this.code = code;
+    }
 
     this.iframeEl = document.createElement('iframe');
     this.iframeContainerEl.appendChild(this.iframeEl);
