@@ -11,8 +11,34 @@
 | ---------------- | ------------------ | ------------------------------------------ | --------- | ----------- |
 | `code`           | `code`             | custom code to be injected into demo frame | `string`  | `undefined` |
 | `darkModeSwitch` | `dark-mode-switch` |                                            | `boolean` | `false`     |
+| `disableResizeX` | `disable-resize-x` |                                            | `boolean` | `false`     |
+| `disableResizeY` | `disable-resize-y` |                                            | `boolean` | `false`     |
 | `head`           | `head`             | Custom head html inside iframe             | `string`  | `''`        |
+| `hideControlBar` | `hide-control-bar` |                                            | `boolean` | `false`     |
 | `hideSource`     | `hide-source`      |                                            | `boolean` | `false`     |
+
+
+## Methods
+
+### `reload() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setContent(code: string) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

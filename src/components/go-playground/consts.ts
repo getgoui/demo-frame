@@ -15,9 +15,7 @@ export const PLACEHOLDER_CONTENT = `<div class="container">
   })
 </script>
 `;
-export const GO_UI_HEAD = `<meta charset="utf-8" />
-<title>Demo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+export const GO_UI_HEAD = `<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.css" />
 <script type="module" src="https://cdn.jsdelivr.net/npm/@go-ui/core/dist/go-ui/go-ui.esm.js"></script>
 `;

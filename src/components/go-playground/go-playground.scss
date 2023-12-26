@@ -27,12 +27,32 @@ go-playground {
     }
     .preview-wrapper{
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-left:1px solid var(--go-color-border);
+      &.fullscreen {
+        position: fixed;
+        z-index: var(--layer-important);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .preview-actions {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: var(--go-size--1);
+        background: var(--go-color-bg);
+        border-bottom: 1px solid var(--go-color-border);
+      }
+      .preview { 
+        flex: 1;
+      }
       iframe {
         width: 100%;
         height: 100%;
         overflow: hidden;
         border: none;
-        border-left:1px solid var(--go-color-border);
       }
     }
     go-tabs{

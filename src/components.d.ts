@@ -48,6 +48,7 @@ export namespace Components {
           * initial code
          */
         "code": string;
+        "head": string;
         "logoSrc": string;
     }
     interface GoPlaygroundHeader {
@@ -262,6 +263,7 @@ declare namespace LocalJSX {
           * initial code
          */
         "code"?: string;
+        "head"?: string;
         "logoSrc"?: string;
     }
     interface GoPlaygroundHeader {

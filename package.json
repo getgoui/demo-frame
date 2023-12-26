@@ -1,6 +1,6 @@
 {
   "name": "@go-ui/demo-frame",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Demo frame for go-ui.com",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -42,9 +42,10 @@
   "dependencies": {
     "@codemirror/commands": "^6.3.2",
     "@codemirror/lang-html": "^6.4.7",
+    "@codemirror/language": "^6.9.3",
     "@codemirror/state": "^6.3.3",
     "@codemirror/view": "^6.22.3",
-    "@go-ui/core": "^1.33.16",
+    "@go-ui/core": "^1.33.17",
     "@replit/codemirror-vscode-keymap": "^6.0.2",
     "codemirror": "^6.0.1",
     "copy-text-to-clipboard": "^3.2.0",

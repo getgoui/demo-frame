@@ -14,13 +14,16 @@ export class GoPlaygroundHeader {
 
   @State() message = '';
 
+  @State() currentLocation = window.location.href;
+
   handleShare() {
     this.shareDialog?.open();
+    this.currentLocation = window.location.href;
   }
   handleCopy() {
     copy(window.location.href);
     this.shareDialog?.close();
-    this.message = `Copied to clipboard`;
+    this.message = `URL has been copied to clipboard`;
   }
 
   @Event()
@@ -37,9 +40,20 @@ export class GoPlaygroundHeader {
   }
 
   render() {
-    const { logoSrc, message } = this;
+    const { logoSrc, message, currentLocation } = this;
     return (
       <div>
+        {message ? (
+          <go-banner
+            global={true}
+            variant="success"
+            heading="Success!"
+            dismissible={true}
+            onDismissed={() => (this.message = '')}
+          >
+            {message}
+          </go-banner>
+        ) : null}
         <header>
           <div>
             <go-gov-au-logo href={GO_UI_SITE_URL}>
@@ -95,7 +109,7 @@ export class GoPlaygroundHeader {
               heading="Share your code"
             >
               <div>
-                <go-input readonly value={window.location.href}></go-input>
+                <go-input readonly value={currentLocation}></go-input>
                 <go-button
                   variant="primary"
                   type="button"
@@ -107,11 +121,6 @@ export class GoPlaygroundHeader {
             </go-dialog>
           </div>
         </header>
-        {message ? (
-          <go-banner global={true} variant="success" dismissible={true}>
-            {message}
-          </go-banner>
-        ) : null}
       </div>
     );
   }
