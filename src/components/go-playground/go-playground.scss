@@ -67,6 +67,7 @@ go-playground {
       top: 0;
       z-index: 999;
       background-color: var(--go-color-bg);
+      min-height: 60px;
     }
     .cm-editor, .cm-content, .cm-gutter { height: 100% }
     .cm-scroller { overflow: auto; }
